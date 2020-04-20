@@ -5,7 +5,6 @@ ENV TF_FORCE_GPU_ALLOW_GROWTH=true
 RUN \
     apt update -y && \
     apt install -y curl make build-essential && \
-    # apt install -y python3 python3-dev
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get -y install nodejs && \
     mkdir /.npm && \
