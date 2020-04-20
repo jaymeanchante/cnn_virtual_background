@@ -1,7 +1,9 @@
 version: "2.3"
 
 services:
-    nvidia:
+    api:
+        build: bodypix/
         runtime: nvidia
-        image: nvidia/cuda:10.2-base
-        command: nvidia-smi
+        ports:
+            - 9000:9000
+        command: node /src/app.js
