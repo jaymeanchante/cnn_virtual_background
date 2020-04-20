@@ -9,13 +9,16 @@ RUN \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get -y install nodejs && \
     mkdir /.npm && \
-    chmod 777 /.npm
+    chmod 777 /.npm && \
+    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get install yarn
 
 WORKDIR /src
 
 COPY package.json /src/
 
-RUN npm install
+RUN yarn install
 
 COPY app.js /src/
 
