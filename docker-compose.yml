@@ -7,3 +7,11 @@ services:
         ports:
             - 9000:9000
         command: node /src/app.js
+    fakecam:
+        build: fakecam/
+        ports:
+            - 8080:8080
+        devices:
+            - /dev/video1:/dev/video1
+            - /dev/video20:/dev/video20
+        command: python -u main.py
